@@ -11,6 +11,11 @@ namespace Code.Logic
             _data.FieldSize = size;
         }
 
+        public void SetGameMode(GameMode gameMode)
+        {
+            _data.Mode = gameMode;
+        }
+
         public GameData GetGameData()
         {
             return _data;
