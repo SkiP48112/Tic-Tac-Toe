@@ -11,17 +11,17 @@ namespace Code.Views
         
         private void OnEnable()
         {
-            _button.onClick.AddListener(OnFieldSizeSelected);
+            _button.onClick.AddListener(OnInitialize);
         }
 
-        private void OnFieldSizeSelected()
+        private void OnInitialize()
         {
             OnInitialized?.Invoke();
         }
         
         private void OnDisable()
         {
-            _button.onClick.AddListener(OnFieldSizeSelected);
+            _button.onClick.AddListener(OnInitialize);
         }
     }
 }

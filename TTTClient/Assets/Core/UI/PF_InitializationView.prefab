@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7941188560635647576}
   - component: {fileID: 6360596314225188356}
+  - component: {fileID: 3546891581991948061}
   m_Layer: 5
   m_Name: PF_InitializationView
   m_TagString: Untagged
@@ -46,6 +47,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2765688789145563153}
   m_CullTransparentMesh: 1
+--- !u!114 &3546891581991948061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2765688789145563153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0b1a4b4dce849158bb132c9fe82f745, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 5587290004614358074}
 --- !u!1 &7449202292868030482
 GameObject:
   m_ObjectHideFlags: 0

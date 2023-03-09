@@ -1,6 +1,5 @@
-namespace Code.Logic
+namespace Code.Logic.Contracts
 {
     public interface IGameModeMenuController
-    {
-    }
+    { }
 }
