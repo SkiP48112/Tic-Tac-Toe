@@ -16,6 +16,11 @@ namespace Code.Logic
             _data.Mode = gameMode;
         }
 
+        public void SetWinner(CellState cellState)
+        {
+            _data.Winner = cellState;
+        }
+
         public GameData GetGameData()
         {
             return _data;

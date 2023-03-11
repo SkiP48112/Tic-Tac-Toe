@@ -4,5 +4,6 @@ namespace Code.Types
     {
         public int FieldSize;
         public GameMode Mode;
+        public CellState Winner;
     }
 }
