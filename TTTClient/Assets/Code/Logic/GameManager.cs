@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Code.Logic.Contracts;
 using Code.Types;
 using Code.Views;
@@ -34,7 +35,7 @@ namespace Code.Logic
         {
             _currentState = _currentState.ToggleState();
         }
-            
+
         public void CheckForGameOver()
         {
             var size = Convert.ToInt32(Math.Sqrt(_cells.Count));
@@ -43,6 +44,17 @@ namespace Code.Logic
                 _gameDataController.SetWinner(_currentState);
                 _sceneLoader.LoadScene("SC_GameOver");
             }
+            
+            if (!CanMakeTurn())
+            {
+                _gameDataController.SetWinner(CellState.Empty);
+                _sceneLoader.LoadScene("SC_GameOver");
+            }
+        }
+
+        private bool CanMakeTurn()
+        {
+            return _cells.Values.Any(cell => cell.GetValue() == CellState.Empty);
         }
 
         private bool CheckRows(int size)
