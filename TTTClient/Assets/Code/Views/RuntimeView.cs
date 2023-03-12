@@ -53,13 +53,7 @@ namespace Code.Views
             {
                 if (_gameManager.GetCurrentState() == _firstAI.GetValue())
                 {
-                    var index = _gameManager.Turn(_indexToCell, _firstAI.GetValue());
-                    if (index == -1)
-                    {
-                        return;
-                    }
-                    
-                    _indexToCell[index].SetValue(_firstAI.GetValue());
+                    _indexToCell[_gameManager.Turn(_indexToCell, _firstAI.GetValue())].SetValue(_firstAI.GetValue());
                     if (!_gameManager.CheckForGameOver())
                     {
                         _gameManager.ToggleCurrentState();

@@ -4,6 +4,7 @@ using System.Linq;
 using Code.Logic.Contracts;
 using Code.Types;
 using Code.Views;
+using ModestTree;
 
 namespace Code.Logic
 {
@@ -46,7 +47,7 @@ namespace Code.Logic
 
         private int GetBestTurn(List<GamePosition> gamePositions, CellState value)
         {
-            var result = -1;
+            var result = new List<int>();
             var min = _size;
 
             foreach (var gamePosition in gamePositions)
@@ -60,20 +61,25 @@ namespace Code.Logic
                 var emptyValues = GetAmountOfValues(gamePosition.Values, CellState.Empty);
                 if (emptyValues <= min && emptyValues > 0)
                 {
-                    if (emptyValues == min && result != -1)
+                    if (emptyValues == min && !result.IsEmpty())
                     {
-                        var r = new Random().Next(0, 100);
-                        if (r > 50)
-                        {
-                            continue;
-                        }
+                        result.Add(gamePosition.First(x => x.Value.GetValue() == CellState.Empty).Key);
+                        continue;
                     }
                     min = emptyValues;
-                    result = gamePosition.First(x => x.Value.GetValue() == CellState.Empty).Key;
+                    result.Clear();
+                    result.Add(gamePosition.First(x => x.Value.GetValue() == CellState.Empty).Key);
                 }
             }
 
-            return result != -1  ? result : GetRandomTurn(gamePositions);
+
+            if (!result.IsEmpty())
+            {
+                var r = new Random();
+                return result[r.Next(0, result.Count - 1)];
+            }
+
+            return GetRandomTurn(gamePositions);
         }
 
         private int GetRandomTurn(List<GamePosition> gamePositions)
@@ -165,8 +171,8 @@ namespace Code.Logic
             result.Add(gamePosition);
             gamePosition.Clear();
             
-            counter = _size - 2;
-            for (int i = 1; i < _size; i++)
+            counter = _size - 1;
+            for (int i = 0; i < _size; i++)
             {
                 var index = i * _size + counter;
                 gamePosition.Add(index, _cells[index]);
