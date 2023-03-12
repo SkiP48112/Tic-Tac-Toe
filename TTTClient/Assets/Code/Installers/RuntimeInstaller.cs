@@ -16,6 +16,7 @@ namespace Code.Installers
             Container.Bind<RuntimeView>().FromInstance(_runtime);
             Container.Bind<FieldInitializationView>().FromInstance(_view);
             Container.Bind<IGameManager>().To<GameManager>().AsSingle().NonLazy();
+            Container.Bind<IAIController>().To<AIController>().AsSingle().NonLazy();
             Container.Bind<IFieldInitializationController>().To<FieldInitializationController>().AsSingle().NonLazy();
         }
     }

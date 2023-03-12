@@ -28,12 +28,21 @@ namespace Code.Views
             return _value.text.ConvertTo();
         }
 
+        public void SetValue(CellState state)
+        {
+            _value.text = state.ConvertTo();
+        }
+
         private void OnButtonClick()
         {
             _value.text = _gameManager.GetCurrentState().ConvertTo();
-            _gameManager.CheckForGameOver();
-            _gameManager.ToggleCurrentState();
+            if (!_gameManager.CheckForGameOver())
+            {
+                _gameManager.ToggleCurrentState();
+            }
+
             _button.onClick.RemoveListener(OnButtonClick);
+            
         }
     }
 }

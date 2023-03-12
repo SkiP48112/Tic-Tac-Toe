@@ -5,9 +5,18 @@ namespace Code.Logic
 {
     public class GameOverController : IGameOverController
     {
-        public GameOverController(GameOverView view, GameDataController gameDataController)
+        private readonly ISceneLoader _sceneLoader;
+
+        public GameOverController(GameOverView view, GameDataController gameDataController, ISceneLoader sceneLoader)
         {
+            _sceneLoader = sceneLoader;
             view.Bind(gameDataController.GetGameData());
+            view.OnClick += OnClick;
+        }
+
+        private void OnClick()
+        {
+            _sceneLoader.LoadScene("SC_Initialize");
         }
     }
 }

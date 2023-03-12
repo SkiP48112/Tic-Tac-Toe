@@ -24,6 +24,7 @@ namespace Code.Logic
             _view.SpawnCells(gameData);
 
             _runtime.CollectCells();
+            _runtime.BindGameMode(gameData.Mode);
             _runtime.Bind(_gameManager);
         }
     }
